@@ -39,7 +39,7 @@ async function loadWords() {
 
 async function displayAWord() {
   const words = await loadWords();
-  const index = ~~(Math.random() * words.length);
+  const index = 965; //~~(Math.random() * words.length);
   const { word, category, image } = words[index];
 
   const toBePrinted = buildWord(word);
@@ -47,26 +47,30 @@ async function displayAWord() {
   app.innerHTML = /*html*/`
     <div class="container">
       <p>category: ${category}</p>
-      <img src="${image !== undefined ? image : ''}">
+      <div class="img-container">
+        <img src="${image !== undefined ? image : ''}">
+      </div>
       <div class="word-container">
         <h1 class="word">${word.shuffle()}</h1>
       </div>
-      <p>${toBePrinted}</p>
-      <form oninput="handleSubmit(event)">
-        <input data-word="${word}" type="text" autofocus/>      
-      </form>
-      <div class="bravo">
-        <img class="medal" src="medal.png" alt="medal" />
-      </div>
-      <div class="bottom-section">
-        <div class="help-container">
-          <span class="hint" onclick="displayHint()">
-            ? ? ?
-          </span>
-          <h1 id="help" style="opacity:0;">${word}</h1>
+      <div class="bellow-img">
+        <p>${toBePrinted}</p>
+        <form oninput="handleSubmit(event)">
+          <input data-word="${word}" type="text" autofocus/>      
+        </form>
+        <div class="bravo">
+          <img class="medal" src="medal.png" alt="medal" />
         </div>
-        <div class="next-container" onclick="displayAWord()">
-          <button class="next">NEXT <span class="arrow"></span></button>  
+        <div class="bottom-section">
+          <div class="help-container">
+            <span class="hint" onclick="displayHint()">
+              ? ? ?
+            </span>
+            <h1 id="help" style="opacity:0;">${word}</h1>
+          </div>
+          <div class="next-container" onclick="displayAWord()">
+            <button class="next">NEXT <span class="arrow"></span></button>  
+          </div>
         </div>
       </div>
     </div>
@@ -75,9 +79,15 @@ async function displayAWord() {
 
 displayAWord();
 
+// ’ '
+
 function handleSubmit(e) {
   e.preventDefault();
-  if(document.querySelector('input').value.toLowerCase().trim() === (document.querySelector('input').dataset.word.trim())) {
+  const input = document.querySelector('input');
+
+  if(input.value.toLowerCase().trim() === (input.dataset.word.toLowerCase().trim())
+    || input.value.toLowerCase().trim().replace(/'/g, "’") === (input.dataset.word.toLowerCase().trim().replace(/'/g, "’"))) {
+
     document.querySelector('.bravo').style.opacity = "1";
   }
 }

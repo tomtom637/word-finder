@@ -15,13 +15,22 @@ body {
   margin: 0 auto;
   /* width: 550px; */
 }
-
-img {
-  width: 200px;
-  height: auto;
-  display: block;
+.img-container {
+  height: 200px;
+  overflow: hidden;
+  margin: auto;
 }
-
+img {
+  text-align: center;
+  height: 100%;
+  width: auto;
+}
+.bellow-img {
+  width: 290px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
 .word-container {
   display: flex;
   flex-direction: column;
@@ -46,6 +55,9 @@ img {
 .next {
   font-weight: 800;
   padding: 0.5rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 .arrow {
   border: solid black;
@@ -73,6 +85,7 @@ img {
   display: inline-block;
 }
 input {
+  width: 90%;
   padding: 0.5rem;
   font-size: 17px;
 }
