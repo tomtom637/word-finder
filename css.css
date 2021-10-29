@@ -90,10 +90,10 @@ input {
   width: 90%;
   padding: 0.5rem;
   font-size: 17px;
+  margin-bottom: -20px;
 }
 .bottom-section {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-top: -60px;
 }
