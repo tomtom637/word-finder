@@ -46,7 +46,7 @@ async function displayAWord() {
 
   app.innerHTML = /*html*/`
     <div class="container">
-      <p>category: ${category}</p>
+      <!--<p>category: ${category}</p>-->
       <div class="img-container">
         <img src="${image !== undefined ? image : ''}">
       </div>
