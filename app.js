@@ -53,11 +53,10 @@ async function displayAWord() {
       </div>
       <p>${toBePrinted}</p>
       <form oninput="handleSubmit(event)">
-        <input data-word="${word}" type="text" />      
+        <input data-word="${word}" type="text" autofocus/>      
       </form>
       <div class="bravo">
-        <span>BRAVO</span>
-        <img class="medal" src="medal.png" alt="medal" />      
+        <img class="medal" src="medal.png" alt="medal" />
       </div>
       <div class="bottom-section">
         <div class="help-container">
@@ -67,8 +66,7 @@ async function displayAWord() {
           <h1 id="help" style="opacity:0;">${word}</h1>
         </div>
         <div class="next-container" onclick="displayAWord()">
-          <span class="next">NEXT</span>
-          <span class="arrow"></span>  
+          <button class="next">NEXT <span class="arrow"></span></button>  
         </div>
       </div>
     </div>
