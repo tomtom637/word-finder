@@ -32,7 +32,7 @@ function buildWord(word) {
 }
 
 async function loadWords() {
-  const wordsData = await fetch('../words.json');
+  const wordsData = await fetch('./words.json');
   const words = await wordsData.json();
   return words;
 }
