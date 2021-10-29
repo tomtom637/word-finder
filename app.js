@@ -59,10 +59,13 @@ async function displayAWord() {
         <h1 id="help" style="opacity:0;">${word}</h1>
       </div>
       <p>${toBePrinted}</p>
-      <form onsubmit="handleSubmit(event)">
+      <form oninput="handleSubmit(event)">
         <input data-word="${word}" type="text" />      
       </form>
-      <div class="bravo">BRAVO</div>
+      <div class="bravo">
+        <span>BRAVO</span>
+        <img class="medal" src="medal.png" alt="medal" />      
+      </div>
       <div class="next-container" onclick="displayAWord()">
         <span class="next">NEXT</span>
         <span class="arrow"></span>  

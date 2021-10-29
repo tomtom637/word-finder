@@ -68,6 +68,11 @@ img {
   font-size: 2rem;
   padding: 1rem;
 }
+.medal {
+  width: 100px;
+  height: auto;
+  display: inline-block;
+}
 input {
   padding: 0.5rem;
   font-size: 17px;
