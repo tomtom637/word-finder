@@ -46,17 +46,10 @@ async function displayAWord() {
 
   app.innerHTML = /*html*/`
     <div class="container">
-      <img src="${image !== undefined ? image : ''}">
       <p>category: ${category}</p>
+      <img src="${image !== undefined ? image : ''}">
       <div class="word-container">
         <h1 class="word">${word.shuffle()}</h1>
-        <div
-          class="hint"
-          onclick="displayHint()"
-        >
-          ? ? ?
-        </div>
-        <h1 id="help" style="opacity:0;">${word}</h1>
       </div>
       <p>${toBePrinted}</p>
       <form oninput="handleSubmit(event)">
@@ -66,9 +59,17 @@ async function displayAWord() {
         <span>BRAVO</span>
         <img class="medal" src="medal.png" alt="medal" />      
       </div>
-      <div class="next-container" onclick="displayAWord()">
-        <span class="next">NEXT</span>
-        <span class="arrow"></span>  
+      <div class="bottom-section">
+        <div class="help-container">
+          <span class="hint" onclick="displayHint()">
+            ? ? ?
+          </span>
+          <h1 id="help" style="opacity:0;">${word}</h1>
+        </div>
+        <div class="next-container" onclick="displayAWord()">
+          <span class="next">NEXT</span>
+          <span class="arrow"></span>  
+        </div>
       </div>
     </div>
   `;

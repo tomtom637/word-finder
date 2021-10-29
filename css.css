@@ -37,11 +37,9 @@ img {
   color: rgb(187, 38, 100);
   font-weight: 800;
   font-size: 0.9rem;
-  text-align: right;
   cursor: pointer;
 }
 .next-container {
-  text-align: right;
   cursor: pointer;
   padding: 1rem;
 }
@@ -56,6 +54,10 @@ img {
   margin-left: auto;
   transform: rotate(-45deg);
 }
+.help-container {
+  display: flex;
+  flex-direction: column;
+}
 #help {
   color: rgb(44, 92, 143);
   font-size: 1.2rem;
@@ -66,14 +68,18 @@ img {
   color:rgb(187, 38, 100);
   font-weight: 800;
   font-size: 2rem;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 .medal {
-  width: 100px;
+  width: 60px;
   height: auto;
   display: inline-block;
 }
 input {
   padding: 0.5rem;
   font-size: 17px;
+}
+.bottom-section {
+  display: flex;
+  justify-content: space-between;
 }
