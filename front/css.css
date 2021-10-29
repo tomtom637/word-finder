@@ -1,0 +1,74 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
+}
+body {
+  display: flex;
+  justify-content: center;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 0 auto;
+  /* width: 550px; */
+}
+
+img {
+  width: 200px;
+  height: auto;
+  display: block;
+}
+
+.word-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.word {
+  letter-spacing: 1rem;
+  font-size: 1.6rem;
+}
+
+.hint {
+  padding: 1rem;
+  color: rgb(187, 38, 100);
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-align: right;
+  cursor: pointer;
+}
+.next-container {
+  text-align: right;
+  cursor: pointer;
+  padding: 1rem;
+}
+.next {
+  font-weight: 800;
+}
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 0.2rem;
+  margin-left: auto;
+  transform: rotate(-45deg);
+}
+#help {
+  color: rgb(44, 92, 143);
+  font-size: 1.2rem;
+
+}
+.bravo {
+  opacity: 0;
+  color:rgb(187, 38, 100);
+  font-weight: 800;
+  font-size: 2rem;
+  padding: 1rem;
+}
+input {
+  padding: 0.5rem;
+  font-size: 17px;
+}
