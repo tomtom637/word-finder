@@ -39,7 +39,7 @@ async function loadWords() {
 
 async function displayAWord() {
   const words = await loadWords();
-  const index = 965; //~~(Math.random() * words.length);
+  const index = ~~(Math.random() * words.length); // debug 965;
   const { word, category, image } = words[index];
 
   const toBePrinted = buildWord(word);
