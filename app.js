@@ -90,11 +90,11 @@ function displayHint() {
   }
 }
 
-document.addEventListener('keyup', e => {
-  if (e.key === ' ') {
-    displayAWord();
-    // document.querySelector('.help').style.display = 'none';
-  } else if (e.key === 'h') {
-    displayHint();
-  }
-});
+// document.addEventListener('keyup', e => {
+//   if (e.key === ' ') {
+//     displayAWord();
+//     // document.querySelector('.help').style.display = 'none';
+//   } else if (e.key === 'h') {
+//     displayHint();
+//   }
+// });
