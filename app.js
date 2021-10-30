@@ -1,35 +1,6 @@
-String.prototype.shuffle = function () {
-  var a = this.split(""),
-    n = a.length;
-
-  for (var i = n - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var tmp = a[i];
-    a[i] = a[j];
-    a[j] = tmp;
-  }
-  return a.join("");
-}
-
-const app = document.getElementById('app');
-
-function buildWord(word) {
-  printedWord = '';
-  word
-    .split('')
-    .forEach((char, i) => {
-      if (i === 0) {
-        printedWord += char + ' ';
-      } else {
-        if (char.match(/^ *$/) !== null) {
-          printedWord += '. ';
-        } else {
-          printedWord += '_ ';
-        }
-      }
-    });
-  return printedWord;
-}
+import shuffleString from './js/suffle-string.js';
+import { handleSubmit, displayHint } from './js/event-listeners.js';
+import buildPartialWord from './js/build-partial-word.js';
 
 async function loadWords() {
   const wordsData = await fetch('./words.json');
@@ -38,11 +9,11 @@ async function loadWords() {
 }
 
 async function displayAWord() {
+  String.prototype.shuffle = shuffleString;
+  const app = document.getElementById('app');
   const words = await loadWords();
   const index = ~~(Math.random() * words.length); // debug 965;
   const { word, category, image } = words[index];
-
-  const toBePrinted = buildWord(word);
 
   app.innerHTML = /*html*/`
     <div class="container">
@@ -54,8 +25,8 @@ async function displayAWord() {
         <h1 class="word">${word.shuffle()}</h1>
       </div>
       <div class="bellow-img">
-        <p>${toBePrinted}</p>
-        <form oninput="handleSubmit(event)">
+        <p>${buildPartialWord(word)}</p>
+        <form id="form">
           <input data-word="${word}" type="text" autofocus/>      
         </form>
         <div class="bravo">
@@ -63,50 +34,21 @@ async function displayAWord() {
         </div>
         <div class="bottom-section">
           <div class="help-container">
-            <span class="hint" onclick="displayHint()">
+            <span class="hint">
               ? ? ?
             </span>
             <h1 id="help" style="opacity:0;">${word}</h1>
           </div>
-          <div class="next-container" onclick="displayAWord()">
+          <div class="next-container">
             <button class="next">NEXT <span class="arrow"></span></button>  
           </div>
         </div>
       </div>
     </div>
   `;
+  document.querySelector('#form').addEventListener('input', handleSubmit);
+  document.querySelector('.hint').addEventListener('click', displayHint);
+  document.querySelector('.next-container').addEventListener('click', displayAWord);
 }
 
 displayAWord();
-
-// ’ '
-
-function handleSubmit(e) {
-  e.preventDefault();
-  const input = document.querySelector('input');
-
-  if(input.value.toLowerCase().trim() === (input.dataset.word.toLowerCase().trim())
-    || input.value.toLowerCase().trim().replace(/'/g, "’") === (input.dataset.word.toLowerCase().trim().replace(/'/g, "’"))) {
-
-    document.querySelector('.bravo').style.opacity = "1";
-  }
-}
-
-
-
-function displayHint() {
-  if (document.querySelector('#help').style.opacity === '1') {
-    document.querySelector('#help').style.opacity = '0';
-  } else {
-    document.querySelector('#help').style.opacity = '1';
-  }
-}
-
-// document.addEventListener('keyup', e => {
-//   if (e.key === ' ') {
-//     displayAWord();
-//     // document.querySelector('.help').style.display = 'none';
-//   } else if (e.key === 'h') {
-//     displayHint();
-//   }
-// });
