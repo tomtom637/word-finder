@@ -1,6 +1,7 @@
-import shuffleString from './js/suffle-string.js';
-import { handleSubmit, displayHint } from './js/event-listeners.js';
+import shuffleString from './js/string-shuffler.js';
+import { handleSubmit, displayHint } from './js/e-listeners-handlers.js';
 import buildPartialWord from './js/build-partial-word.js';
+import loadImage from './js/image-loader.js';
 
 async function loadWords() {
   const wordsData = await fetch('./words.json');
@@ -14,6 +15,8 @@ async function displayAWord() {
   const words = await loadWords();
   const index = ~~(Math.random() * words.length); // debug 965;
   const { word, category, image } = words[index];
+
+  loadImage(image);
 
   app.innerHTML = /*html*/`
     <div class="container">
