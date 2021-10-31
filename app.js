@@ -15,8 +15,7 @@ async function displayAWord() {
   const words = await loadWords();
   const index = ~~(Math.random() * words.length); // debug 965;
   const { word, category, image } = words[index];
-
-  loadImage(image);
+  await loadImage(image);
 
   app.innerHTML = /*html*/`
     <div class="container">
@@ -25,12 +24,23 @@ async function displayAWord() {
         <img src="${image !== undefined ? image : ''}">
       </div>
       <div class="word-container">
-        <h1 class="word">${word.shuffle()}</h1>
+        <h1 class="word">
+          ${word
+              .shuffle()
+              .split('')
+              .map(char => /*html*/`<span class="char">${char}</span>`)
+              .join('')
+            }
+        </h1>
       </div>
       <div class="bellow-img">
         <p>${buildPartialWord(word)}</p>
         <form id="form">
-          <input data-word="${word}" type="text" autofocus/>      
+          <input
+            data-word="${word}"
+            type="text"
+            autofocus
+          />      
         </form>
         <div class="bravo">
           <img class="medal" src="medal.png" alt="medal" />

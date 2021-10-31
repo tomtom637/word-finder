@@ -35,13 +35,15 @@ img {
   display: flex;
   flex-direction: column;
 }
-
 .word {
-  letter-spacing: 1rem;
   font-size: 1.6rem;
   margin-bottom: -5px;
 }
-
+.char {
+  padding: 0.4rem;
+  margin: 0.2rem;
+  background: #ddd;
+}
 .hint {
   padding: 1rem;
   color: rgb(187, 38, 100);
