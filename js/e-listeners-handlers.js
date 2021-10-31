@@ -1,4 +1,4 @@
-export function handleSubmit(e) {
+export function handleInput(e) {
   e.preventDefault();
   const input = document.querySelector('input');
   if(input.value.toLowerCase().trim().replace(/'/g, "’") === (input.dataset.word.toLowerCase().trim().replace(/'/g, "’"))) {

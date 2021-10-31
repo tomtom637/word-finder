@@ -8,6 +8,9 @@ body {
   display: flex;
   justify-content: center;
 }
+* {
+  box-sizing: inherit;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -36,6 +39,8 @@ img {
   flex-direction: column;
 }
 .word {
+  display: flex;
+  flex-wrap: wrap;
   font-size: 1.6rem;
   margin-bottom: -5px;
 }
@@ -43,6 +48,7 @@ img {
   padding: 0.4rem;
   margin: 0.2rem;
   background: #ddd;
+  min-width: 28px;
 }
 .hint {
   padding: 1rem;
