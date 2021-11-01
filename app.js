@@ -14,7 +14,12 @@ async function displayAWord() {
   const app = document.getElementById('app');
   const words = await loadWords();
   const index = ~~(Math.random() * words.length); // debug 965;
-  const { word, category, image } = words[index];
+  let { word, category, image } = words[index];
+  if(image !== undefined) {
+    if(Array.isArray(image)) {
+      image = image[~~(Math.random() * image.length)]
+    }
+  }
   await loadImage(image);
 
   app.innerHTML = /*html*/`

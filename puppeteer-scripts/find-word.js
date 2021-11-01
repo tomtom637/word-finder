@@ -6,6 +6,6 @@ const words = JSON.parse(rawdata);
 let counter = 0;
 
 for (let i = 0; i < words.length; i++) {
-  if(words[i].word === `cochon d’Inde`) console.log(i);
+  if(words[i].word === `poisson`) console.log(i);
 }
 
