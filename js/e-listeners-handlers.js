@@ -21,7 +21,7 @@ export function handleInput(e) {
     if(charToColor.includes(span.innerHTML.toLowerCase())
       && span.style.background !== 'rgba(238, 34, 68, 0.3)') {
       span.style.background = 'rgba(238, 34, 68, 0.3)';
-      charToColor.splice(charToColor.indexOf(span.innerText.toLowerCase()), 1);
+      charToColor.splice(charToColor.indexOf(span.innerHTML.toLowerCase()), 1);
     }
   });
 
