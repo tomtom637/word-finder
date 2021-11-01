@@ -1,10 +1,18 @@
+export function displayHint() {
+  const help = document.querySelector('#help');
+  if (help.style.opacity === '1') {
+    help.style.opacity = '0';
+  } else {
+    help.style.opacity = '1';
+  }
+}
+
 export function handleInput(e) {
   e.preventDefault();
-
   // Change the background color when an input matches with available letters
   const input = document.querySelector('input');
-  const allSpans = document.querySelectorAll('.char');
-  
+
+  const allSpans = document.querySelectorAll('.char');  
   // reinitialize the background color to default
   allSpans.forEach(span => span.style.background = '#ddd');
 
@@ -24,17 +32,18 @@ export function handleInput(e) {
       charToColor.splice(charToColor.indexOf(span.innerHTML.toLowerCase()), 1);
     }
   });
-
   if(input.value.toLowerCase().trim().replace(/'/g, "’") === (input.dataset.word.toLowerCase().trim().replace(/'/g, "’"))) {
     document.querySelector('.bravo').style.opacity = "1";
   }
 }
 
-export function displayHint() {
-  const help = document.querySelector('#help');
-  if (help.style.opacity === '1') {
-    help.style.opacity = '0';
-  } else {
-    help.style.opacity = '1';
+export function handleKeyup(e) {
+  switch(e.key) {
+    case 'ArrowRight':
+      document.querySelector('.next').click();
+      break;
+    case 'Enter':
+      document.querySelector('.next').click();
+      break;
   }
 }

@@ -1,5 +1,5 @@
 import shuffleString from './js/string-shuffler.js';
-import { handleInput, displayHint } from './js/e-listeners-handlers.js';
+import { displayHint, handleInput, handleKeyup} from './js/e-listeners-handlers.js';
 import buildPartialWord from './js/build-partial-word.js';
 import loadImage from './js/image-loader.js';
 
@@ -64,9 +64,11 @@ async function displayAWord() {
       </div>
     </div>
   `;
+  document.querySelector('input').focus();
   document.querySelector('#form').addEventListener('input', handleInput);
   document.querySelector('.hint').addEventListener('click', displayHint);
   document.querySelector('.next-container').addEventListener('click', displayAWord);
+  document.addEventListener('keyup', handleKeyup);
 }
 
 displayAWord();
