@@ -39,9 +39,6 @@ export function handleInput(e) {
 
 export function handleKeyup(e) {
   switch(e.key) {
-    case 'ArrowRight':
-      document.querySelector('.next').click();
-      break;
     case 'Enter':
       document.querySelector('.next').click();
       break;
