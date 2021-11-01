@@ -13,7 +13,7 @@ async function displayAWord() {
   String.prototype.shuffle = shuffleString;
   const app = document.getElementById('app');
   const words = await loadWords();
-  const index = ~~(Math.random() * words.length); // debug 965;
+  const index = 965; //~~(Math.random() * words.length); // debug 965;
   const { word, category, image } = words[index];
   await loadImage(image);
 

@@ -2,7 +2,6 @@ export function handleInput(e) {
   e.preventDefault();
 
   // Change the background color when an input matches with available letters
-  // TODO take spaces into account
   const input = document.querySelector('input');
   const allSpans = document.querySelectorAll('.char');
   
@@ -19,7 +18,7 @@ export function handleInput(e) {
     }
   }
   allSpans.forEach(span => {
-    if(charToColor.includes(span.innerText.toLowerCase())
+    if(charToColor.includes(span.innerHTML.toLowerCase())
       && span.style.background !== 'rgba(238, 34, 68, 0.3)') {
       span.style.background = 'rgba(238, 34, 68, 0.3)';
       charToColor.splice(charToColor.indexOf(span.innerText.toLowerCase()), 1);
