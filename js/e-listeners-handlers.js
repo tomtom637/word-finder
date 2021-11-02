@@ -42,5 +42,10 @@ export function handleKeyup(e) {
     case 'Enter':
       document.querySelector('.next').click();
       break;
+    case e.key:
+      if(document.querySelector('input').dataset.word.includes(e.key)) {
+        console.log(e.key);
+      }
+      break;
   }
 }

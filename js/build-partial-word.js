@@ -1,4 +1,23 @@
-export default function buildPartialWord(word) {
+export function buildAnswer(word) {
+  let printed = '';
+  const splitedWord = word.split('');
+  for(let i = 0; i < splitedWord.length; ++i) {
+    
+
+
+
+
+    printed += /*html*/`
+      <span class="answer-unit">
+        ${splitedWord[i]}
+      </span>
+    `;
+  }
+
+  return printed;
+}
+
+export function buildPartialWord(word) {
   let printedWord = '';
   word
     .split('')

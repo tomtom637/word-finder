@@ -1,6 +1,6 @@
 import shuffleString from './js/string-shuffler.js';
 import { displayHint, handleInput, handleKeyup} from './js/e-listeners-handlers.js';
-import buildPartialWord from './js/build-partial-word.js';
+import {buildPartialWord, buildAnswer} from './js/build-partial-word.js';
 import loadImage from './js/image-loader.js';
 
 async function loadWords() {
@@ -28,18 +28,18 @@ async function displayAWord() {
       <div class="img-container">
         <img src="${image !== undefined ? image : ''}">
       </div>
-      <div class="word-container">
-        <h1 class="word">
-          ${word
-              .shuffle()
-              .split('')
-              .map(char => /*html*/`<span class="char">${char}</span>`)
-              .join('')
-            }
-        </h1>
-      </div>
       <div class="bellow-img">
-        <p>${buildPartialWord(word)}</p>
+        <div id="answer">${buildAnswer(word)}</div>
+        <div class="inputs-container">
+          <h1 id="inputs" class="inputs">
+            ${word
+                .shuffle()
+                .split('')
+                .map(char => /*html*/`<span class="char">${char}</span>`)
+                .join('')
+              }
+          </h1>
+        </div>
         <form id="form">
           <input
             data-word="${word}"

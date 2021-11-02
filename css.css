@@ -34,11 +34,22 @@ img {
   flex-direction: column;
   margin: 0 auto;
 }
-.word-container {
+#answer {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.answer-unit {
+  margin-right: 0.2rem;
+  padding: 0.4rem;
+  background: #fdeb8f;
+  min-width: 22px;
+}
+.inputs-container {
   display: flex;
   flex-direction: column;
 }
-.word {
+.inputs {
   display: flex;
   flex-wrap: wrap;
   font-size: 1.6rem;
@@ -93,6 +104,9 @@ img {
   height: auto;
   display: block;
   margin: -0.2rem auto 0;
+}
+#form {
+  margin-top: 2rem;
 }
 input {
   width: 90%;
