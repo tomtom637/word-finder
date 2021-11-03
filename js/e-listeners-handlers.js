@@ -222,6 +222,8 @@ function checkWin(word) {
     document.querySelector('.bravo').style.opacity = "1";
     document.querySelector('.next').style.display = "block";
     document.querySelector('.backspace-container').remove();
+    document.querySelector('.hint').remove();
+
   }
 }
 
