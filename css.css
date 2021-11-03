@@ -121,7 +121,6 @@ img {
   border-radius: 2px;
 }
 .next-container {
-  cursor: pointer;
   padding: 1rem;
   display: none;
   pointer-events: none;
