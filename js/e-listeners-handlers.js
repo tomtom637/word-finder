@@ -160,6 +160,7 @@ export function handleClickChar(e) {
   updateAnswerDiv(word);
   updateInputs(word);
   checkWin(word);
+  updateHint(word);
 }
 
 export function handleBackspace() {
@@ -212,6 +213,7 @@ function updateInputs(word) {
       span.style.opacity = '1';
       span.style.pointerEvents = 'auto';
     }
+    updateHint(word);
   });
 }
 
@@ -221,4 +223,12 @@ function checkWin(word) {
     document.querySelector('.next').style.display = "block";
 
   }
+}
+
+function updateHint(word) {
+  const help = document.querySelector('#help');
+  if (help.style.opacity === '1') {
+    help.style.opacity = '0';
+  }
+  help.innerHTML = word[window.inputState.length] ? word[window.inputState.length] : '';
 }
