@@ -1,7 +1,10 @@
 import shuffleString from './js/string-shuffler.js';
-import { displayHint, handleInput, handleKeyup} from './js/e-listeners-handlers.js';
-import {buildPartialWord, buildAnswer} from './js/build-partial-word.js';
+import { displayHint, handleKeydown, handleKeyup, handleClickChar, handleBackspace } from './js/e-listeners-handlers.js';
 import loadImage from './js/image-loader.js';
+
+// global variables
+window.inputState = '';
+window.shiftPressed = false;
 
 async function loadWords() {
   const wordsData = await fetch('./words.json');
@@ -10,11 +13,13 @@ async function loadWords() {
 }
 
 async function displayAWord() {
+  window.inputState = '';
   String.prototype.shuffle = shuffleString;
   const app = document.getElementById('app');
   const words = await loadWords();
-  const index = ~~(Math.random() * words.length); // debug 965;
+  const index = ~~(Math.random() * words.length); // debug '965 / ^963 / ¨1190 / êe633;
   let { word, category, image } = words[index];
+  let availableInputs = [];
   if(image !== undefined) {
     if(Array.isArray(image)) {
       image = image[~~(Math.random() * image.length)]
@@ -29,9 +34,22 @@ async function displayAWord() {
         <img src="${image !== undefined ? image : ''}">
       </div>
       <div class="bellow-img">
-        <div id="answer">${buildAnswer(word)}</div>
+        <div id="answer">
+          ${word
+              .split('')
+              .map((answerElement, i) => /*html*/`
+                <span
+                  class="answer-unit
+                    ${answerElement === ' ' ? 'space' : ''}
+                    ${window.inputState[i] ? 'space-active' : ''}"
+                  >
+                  ${window.inputState[i] ? window.inputState[i] : ''}
+                </span>
+              `)
+              .join('')}
+        </div>
         <div class="inputs-container">
-          <h1 id="inputs" class="inputs">
+          <h1 id="inputs" class="inputs" data-word="${word}">
             ${word
                 .shuffle()
                 .split('')
@@ -40,13 +58,6 @@ async function displayAWord() {
               }
           </h1>
         </div>
-        <form id="form">
-          <input
-            data-word="${word}"
-            type="text"
-            autofocus
-          />      
-        </form>
         <div class="bravo">
           <img class="medal" src="medal.png" alt="medal" />
         </div>
@@ -57,18 +68,25 @@ async function displayAWord() {
             </span>
             <h1 id="help" style="opacity:0;">${word}</h1>
           </div>
-          <div class="next-container">
-            <button class="next">NEXT <span class="arrow"></span></button>  
+          <div class="buttons">
+            <div class="backspace-container">
+              <button class=backspace>BACKSPACE</button>
+            </div>
+            <div class="next-container">
+              <button class="next">NEXT <span class="arrow"></span></button>  
+            </div>
           </div>
         </div>
       </div>
     </div>
   `;
-  document.querySelector('input').focus();
-  document.querySelector('#form').addEventListener('input', handleInput);
+  document.querySelector('#inputs').addEventListener('click', handleClickChar);
   document.querySelector('.hint').addEventListener('click', displayHint);
+  document.querySelector('.backspace-container').addEventListener('click', handleBackspace);
   document.querySelector('.next-container').addEventListener('click', displayAWord);
   document.addEventListener('keyup', handleKeyup);
+  document.addEventListener('keydown', handleKeydown);
+  document.addEventListener('dblclick', e => e.preventDefault());
 }
 
 displayAWord();
