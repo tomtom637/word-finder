@@ -1,5 +1,5 @@
 import shuffleString from './js/string-shuffler.js';
-import { displayHint, handleKeydown, handleKeyup, handleClickChar, handleBackspace } from './js/e-listeners-handlers.js';
+import { displayHint, handleKeydown, handleKeyup, handleMouseupChar, handleMousedownChar, handleBackspace, handleTouchstartChar, handleTouchendChar } from './js/e-listeners-handlers.js';
 import loadImage from './js/image-loader.js';
 
 // global variables
@@ -80,7 +80,10 @@ async function displayAWord() {
       </div>
     </div>
   `;
-  document.querySelector('#inputs').addEventListener('click', handleClickChar);
+  document.querySelector('#inputs').addEventListener('mouseup', handleMouseupChar);
+  document.querySelector('#inputs').addEventListener('mousedown', handleMousedownChar);
+  document.querySelector('#inputs').addEventListener('touchstart', handleTouchstartChar);
+  document.querySelector('#inputs').addEventListener('touchend', handleTouchendChar);
   document.querySelector('.hint').addEventListener('click', displayHint);
   document.querySelector('.backspace-container').addEventListener('click', handleBackspace);
   document.querySelector('.next-container').addEventListener('click', displayAWord);

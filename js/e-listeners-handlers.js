@@ -160,12 +160,16 @@ export function handleKeyup(e) {
 
   window.shiftPressed = false;
 }
-
-export function handleClickChar(e) {
+export function handleMousedownChar(e) {
+  if(e.target.nodeName !== 'SPAN') return;
+  e.target.style.transform = 'scale(1.6)';
+}
+export function handleMouseupChar(e) {
   if(e.target.nodeName !== 'SPAN') return;
 
   const word = document.querySelector('#inputs').dataset.word;
   window.inputState += e.target.innerHTML;
+  e.target.style.transform = 'scale(1)';
   updateAnswerDiv(word);
   updateInputs(word);
   checkWin(word);
@@ -177,6 +181,23 @@ export function handleBackspace() {
   window.inputState = window.inputState.slice(0, -1);
   updateAnswerDiv(word);
   updateInputs(word);
+}
+
+export function handleTouchstartChar(e) {
+  e.preventDefault();
+  if(e.target.nodeName !== 'SPAN') return;
+  e.target.style.transform = 'scale(1.6) translateY(-20px)';
+}
+
+export function handleTouchendChar(e) {
+  if(e.target.nodeName !== 'SPAN') return;
+  const word = document.querySelector('#inputs').dataset.word;
+  window.inputState += e.target.innerHTML;
+  e.target.style.transform = 'scale(1) translateY(0)';
+  updateAnswerDiv(word);
+  updateInputs(word);
+  checkWin(word);
+  updateHint(word);
 }
 
 

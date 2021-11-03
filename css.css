@@ -3,6 +3,11 @@ html, body {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Courier New', Courier, monospace;
+  -webkit-user-select: none; 
+  -webkit-touch-callout: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none;
 }
 body {
   display: flex;
@@ -81,7 +86,6 @@ img {
   background: #ddd;
   min-width:35px;
   min-height: 49px;
-  user-select: none;
   cursor: pointer;
   border: 1px solid #ccc;
   letter-spacing: 0.1rem;
@@ -156,7 +160,7 @@ img {
 }
 #help {
   text-align: center;
-  color: rgb(44, 92, 143);
+  color: #777;
   font-size: 3rem;
   margin-top: 3rem;
 
@@ -167,8 +171,8 @@ img {
 }
 .medal {
   position: absolute;
-  width: 60px;
-  height: auto;
+  height: 150px;
+  width: auto;
   display: block;
   left: 0;
   top: 0;
