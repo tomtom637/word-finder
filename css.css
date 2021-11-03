@@ -158,13 +158,6 @@ img {
   display: flex;
   flex-direction: column;
 }
-#help {
-  text-align: center;
-  color: #777;
-  font-size: 3rem;
-  margin-top: 3rem;
-
-}
 .bravo {
   position: relative;
   opacity: 0;

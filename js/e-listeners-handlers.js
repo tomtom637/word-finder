@@ -1,12 +1,13 @@
 //import { buildAnswer } from './build-partial-word.js';
 
 export function displayHint() {
-  const help = document.querySelector('#help');
-  if (help.style.opacity === '1') {
-    help.style.opacity = '0';
-  } else {
-    help.style.opacity = '1';
+  const word = document.querySelector('#inputs').dataset.word;
+  if(word[window.inputState.length]) {
+    window.inputState += word[window.inputState.length];
   }
+  updateAnswerDiv(word);
+  updateInputs(word);
+  checkWin(word);
 }
 
 export function handleKeydown(e) {
@@ -173,7 +174,6 @@ export function handleMouseupChar(e) {
   updateAnswerDiv(word);
   updateInputs(word);
   checkWin(word);
-  updateHint(word);
 }
 
 export function handleBackspace() {
@@ -197,7 +197,6 @@ export function handleTouchendChar(e) {
   updateAnswerDiv(word);
   updateInputs(word);
   checkWin(word);
-  updateHint(word);
 }
 
 
@@ -243,7 +242,6 @@ function updateInputs(word) {
       span.style.opacity = '1';
       span.style.pointerEvents = 'auto';
     }
-    updateHint(word);
   });
 }
 
@@ -257,12 +255,4 @@ function checkWin(word) {
     }
 
   }
-}
-
-function updateHint(word) {
-  const help = document.querySelector('#help');
-  if (help.style.opacity === '1') {
-    help.style.opacity = '0';
-  }
-  help.innerHTML = word[window.inputState.length] ? word[window.inputState.length] : '';
 }
