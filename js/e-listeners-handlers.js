@@ -221,7 +221,7 @@ function checkWin(word) {
   if(window.inputState.toLowerCase().trim().replace(/'/g, "’") === (word.toLowerCase().trim().replace(/'/g, "’"))) {
     document.querySelector('.bravo').style.opacity = "1";
     document.querySelector('.next').style.display = "block";
-
+    document.querySelector('.backspace-container').remove();
   }
 }
 
