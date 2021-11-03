@@ -22,6 +22,15 @@ export function handleKeyup(e) {
   switch(e.key) {
     case 'Shift':
       break;
+    case 'ArrowUp':
+      displayHint();
+      return;
+    case 'ArrowDown':
+      displayHint();
+      return;
+    case 'Meta':
+      displayHint();
+      return;
     case 'Enter':
       document.querySelector('.next').click();
       break;
@@ -221,8 +230,10 @@ function checkWin(word) {
   if(window.inputState.toLowerCase().trim().replace(/'/g, "’") === (word.toLowerCase().trim().replace(/'/g, "’"))) {
     document.querySelector('.bravo').style.opacity = "1";
     document.querySelector('.next').style.display = "block";
-    document.querySelector('.backspace-container').remove();
-    document.querySelector('.hint').remove();
+    if(document.querySelector('.hint') !== null) {
+      document.querySelector('.backspace-container').remove();
+      document.querySelector('.hint').remove();
+    }
 
   }
 }

@@ -50,13 +50,14 @@ img {
   background: #f5f5f5;
   min-width: 22px;
   min-height: 33px;
-  border-bottom: 2px solid rgba(83, 166, 255, 0.637);
+  border-bottom: 5px solid rgba(83, 166, 255, 0.4)
 }
 .space {
   background: #ffffff;
 }
 .space-active {
   background: #fdeb8f;
+  border: none;
 }
 .inputs-container {
   display: flex;
@@ -97,8 +98,12 @@ img {
   user-select: none;
 }
 .backspace {
+  cursor: pointer;
+  color: #585858;
+  font-size: 0.6rem;
   font-weight: 800;
-  padding: 0.5rem;
+  border: none;
+  padding: 0.8rem 0.5rem;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -110,8 +115,12 @@ img {
   user-select: none;
 }
 .next {
+  cursor: pointer;
+  color: #585858;
+  font-size: 0.6rem;
   font-weight: 800;
-  padding: 0.5rem;
+  border: none;
+  padding: 0.8rem 0.5rem;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
