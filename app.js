@@ -5,7 +5,6 @@ import loadImage from './js/image-loader.js';
 // global variables
 window.inputState = '';
 window.shiftPressed = false;
-window.hintCounter = ['?', '?', '?'];
 
 async function loadWords() {
   const wordsData = await fetch('./words.json');
@@ -65,9 +64,7 @@ async function displayAWord() {
         <div class="bottom-section">
           <div class="help-container">
             <span class="hint">
-              ${window.hintCounter.map(hint => `
-                ${hint} 
-              `).join('')}
+              ?
             </span>
           </div>
           <div class="buttons">
