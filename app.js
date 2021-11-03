@@ -69,7 +69,6 @@ async function displayAWord() {
                 ${hint} 
               `).join('')}
             </span>
-            <h1 id="help" style="opacity:0;">${word[window.inputState.length]}</h1>
           </div>
           <div class="buttons">
             <div class="backspace-container">
@@ -80,6 +79,7 @@ async function displayAWord() {
             </div>
           </div>
         </div>
+        <h1 id="help" style="opacity:0;">${word[window.inputState.length]}</h1>
       </div>
     </div>
   `;
