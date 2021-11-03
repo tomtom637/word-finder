@@ -76,7 +76,6 @@ img {
   display: flex;
   flex-wrap: wrap;
   font-size: 2.3rem;
-  user-select: none;
 }
 .char {
   color: #333;
@@ -102,12 +101,10 @@ img {
 .buttons {
   display: flex;
   flex-direction: column;
-  user-select: none;
 }
 .backspace-container {
   cursor: pointer;
   padding: 1rem;
-  user-select: none;
 }
 .backspace {
   cursor: pointer;
@@ -119,7 +116,6 @@ img {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  user-select: none; 
   letter-spacing: 0.1rem;
   box-shadow: -4px 5px 5px -2px rgba(158, 158, 158, 0.3);
   border-radius: 2px;
@@ -127,7 +123,8 @@ img {
 .next-container {
   cursor: pointer;
   padding: 1rem;
-  user-select: none;
+  display: none;
+  pointer-events: none;
 }
 .next {
   cursor: pointer;
@@ -139,11 +136,9 @@ img {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  user-select: none;
   letter-spacing: 0.1rem;
   box-shadow: -4px 5px 5px -2px rgba(158, 158, 158, 0.3);
   border-radius: 2px;
-  display: none;
 }
 .arrow {
   border: solid black;
@@ -152,7 +147,6 @@ img {
   padding: 0.2rem;
   margin-left: auto;
   transform: rotate(-45deg);
-  user-select: none;
 }
 .help-container {
   display: flex;

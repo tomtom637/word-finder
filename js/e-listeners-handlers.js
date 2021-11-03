@@ -248,7 +248,8 @@ function updateInputs(word) {
 function checkWin(word) {
   if(window.inputState.toLowerCase().trim().replace(/'/g, "’") === (word.toLowerCase().trim().replace(/'/g, "’"))) {
     document.querySelector('.bravo').style.opacity = "1";
-    document.querySelector('.next').style.display = "block";
+    document.querySelector('.next-container').style.display = "block";
+    document.querySelector('.next-container').style.pointerEvents = "auto";
     if(document.querySelector('.hint') !== null) {
       document.querySelector('.backspace-container').remove();
       document.querySelector('.hint').remove();
