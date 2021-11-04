@@ -234,8 +234,6 @@ function updateAnswerDiv(word) {
 
 function updateInputs(word) {
   const allSpans = document.querySelectorAll('.char');
-  // reinitialize the background color to default
-  allSpans.forEach(span => span.style.background = '#ddd');
 
   const charInInput = window.inputState.replace(/'/g, "’").toLowerCase().split('');
   const charInWord = word.replace(/'/g, "’").toLowerCase().split('');
