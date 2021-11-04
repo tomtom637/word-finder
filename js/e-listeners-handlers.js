@@ -187,16 +187,16 @@ export function handleTouchstartChar(e) {
   e.preventDefault();
   currentlyTouchedElement = e.target;
   if(currentlyTouchedElement.nodeName !== 'SPAN') return;
-  currentlyTouchedElement.style.transform = 'scale(1.6) translateY(-20px)';
+  currentlyTouchedElement.style.transform = 'scale(1.6)';
 }
 
 export function handleTouchmoveChar(e) {
   e.preventDefault();
   const newTouchedElement = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
   if(newTouchedElement !== currentlyTouchedElement) {
-    currentlyTouchedElement.style.transform = 'scale(1) translateY(0)';
+    currentlyTouchedElement.style.transform = 'scale(1)';
     if(newTouchedElement.nodeName === 'SPAN') {
-      newTouchedElement.style.transform = 'scale(1.6) translateY(-20px)';
+      newTouchedElement.style.transform = 'scale(1.6)';
     }
     currentlyTouchedElement = newTouchedElement;
   }
