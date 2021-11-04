@@ -206,8 +206,10 @@ export function handleTouchmoveChar(e) {
 export function handleTouchendChar(e) {
   if(currentlyTouchedElement.nodeName !== 'SPAN') return;
   const word = document.querySelector('#inputs').dataset.word;
-  window.inputState += currentlyTouchedElement.innerHTML;
   currentlyTouchedElement.style.transform = 'scale(1) translateY(0)';
+  if(currentlyTouchedElement.className === 'char') {
+    window.inputState += currentlyTouchedElement.innerHTML;
+  }
   const index = currentlyTouchedElement.dataset.index;
   updateAnswerDiv(word);
   updateInputs(word, index);
