@@ -79,7 +79,7 @@ img {
 }
 .char {
   color: #333;
-  padding: 0.4rem;
+  padding: 0.4rem 0.6rem;
   margin-right: 0.8rem;
   margin-bottom: 0.8rem;
   background: #ddd;
