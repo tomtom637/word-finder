@@ -1,4 +1,4 @@
-//import { buildAnswer } from './build-partial-word.js';
+let currentlyTouchedElement;
 
 export function displayHint() {
   const word = document.querySelector('#inputs').dataset.word;
@@ -185,15 +185,29 @@ export function handleBackspace() {
 
 export function handleTouchstartChar(e) {
   e.preventDefault();
-  if(e.target.nodeName !== 'SPAN') return;
-  e.target.style.transform = 'scale(1.6) translateY(-20px)';
+  currentlyTouchedElement = e.target;
+  if(currentlyTouchedElement.nodeName !== 'SPAN') return;
+  currentlyTouchedElement.style.transform = 'scale(1.6) translateY(-20px)';
+}
+
+export function handleTouchmoveChar(e) {
+  e.preventDefault();
+  const newTouchedElement = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+  if(newTouchedElement !== currentlyTouchedElement) {
+    currentlyTouchedElement.style.transform = 'scale(1) translateY(0)';
+    if(newTouchedElement.nodeName === 'SPAN') {
+      newTouchedElement.style.transform = 'scale(1.6) translateY(-20px)';
+    }
+    currentlyTouchedElement = newTouchedElement;
+  }
+
 }
 
 export function handleTouchendChar(e) {
-  if(e.target.nodeName !== 'SPAN') return;
+  if(currentlyTouchedElement.nodeName !== 'SPAN') return;
   const word = document.querySelector('#inputs').dataset.word;
-  window.inputState += e.target.innerHTML;
-  e.target.style.transform = 'scale(1) translateY(0)';
+  window.inputState += currentlyTouchedElement.innerHTML;
+  currentlyTouchedElement.style.transform = 'scale(1) translateY(0)';
   updateAnswerDiv(word);
   updateInputs(word);
   checkWin(word);

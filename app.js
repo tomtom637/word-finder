@@ -1,5 +1,5 @@
 import shuffleString from './js/string-shuffler.js';
-import { displayHint, handleKeydown, handleKeyup, handleMouseupChar, handleMousedownChar, handleBackspace, handleTouchstartChar, handleTouchendChar } from './js/e-listeners-handlers.js';
+import { displayHint, handleKeydown, handleKeyup, handleMouseupChar, handleMousedownChar, handleBackspace, handleTouchstartChar, handleTouchmoveChar, handleTouchendChar } from './js/e-listeners-handlers.js';
 import loadImage from './js/image-loader.js';
 
 // global variables
@@ -19,7 +19,6 @@ async function displayAWord() {
   const words = await loadWords();
   const index = ~~(Math.random() * words.length); // debug '965 / ^963 / ¨1190 / êe633;
   let { word, category, image } = words[index];
-  let availableInputs = [];
   if(image !== undefined) {
     if(Array.isArray(image)) {
       image = image[~~(Math.random() * image.length)]
@@ -29,7 +28,6 @@ async function displayAWord() {
 
   app.innerHTML = /*html*/`
     <div class="container">
-      <!--<p>category: ${category}</p>-->
       <div class="img-container">
         <img src="${image !== undefined ? image : ''}">
       </div>
@@ -83,6 +81,7 @@ async function displayAWord() {
   document.querySelector('#inputs').addEventListener('mouseup', handleMouseupChar);
   document.querySelector('#inputs').addEventListener('mousedown', handleMousedownChar);
   document.querySelector('#inputs').addEventListener('touchstart', handleTouchstartChar);
+  document.querySelector('#inputs').addEventListener('touchmove', handleTouchmoveChar);
   document.querySelector('#inputs').addEventListener('touchend', handleTouchendChar);
   document.querySelector('.hint').addEventListener('click', displayHint);
   document.querySelector('.backspace-container').addEventListener('click', handleBackspace);
