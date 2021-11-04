@@ -51,7 +51,7 @@ async function displayAWord() {
             ${word
                 .shuffle()
                 .split('')
-                .map(char => /*html*/`<span class="char">${char}</span>`)
+                .map((char, i) => /*html*/`<span class="char" data-index="${i}">${char}</span>`)
                 .join('')
               }
           </h1>

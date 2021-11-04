@@ -208,8 +208,9 @@ export function handleTouchendChar(e) {
   const word = document.querySelector('#inputs').dataset.word;
   window.inputState += currentlyTouchedElement.innerHTML;
   currentlyTouchedElement.style.transform = 'scale(1) translateY(0)';
+  const index = currentlyTouchedElement.dataset.index;
   updateAnswerDiv(word);
-  updateInputs(word);
+  updateInputs(word, index);
   checkWin(word);
 }
 
@@ -232,7 +233,7 @@ function updateAnswerDiv(word) {
   `;
 }
 
-function updateInputs(word) {
+function updateInputs(word, index=null) {
   const allSpans = document.querySelectorAll('.char');
 
   const charInInput = window.inputState.replace(/'/g, "’").toLowerCase().split('');
@@ -244,17 +245,23 @@ function updateInputs(word) {
       charToDelete.push(charInInput[i]);
     }
   }
-  allSpans.forEach(span => {
-    if(charToDelete.includes(span.innerHTML.toLowerCase())){
-      //&& span.style.display !== 'none') {
-      span.style.opacity = '0';
-      span.style.pointerEvents = 'none';
-      charToDelete.splice(charToDelete.indexOf(span.innerHTML.toLowerCase()), 1);
-    } else {
-      span.style.opacity = '1';
-      span.style.pointerEvents = 'auto';
-    }
-  });
+  if(index !== null) {
+    allSpans[index].style.opacity = '0';
+    allSpans[index].style.pointerEvents = 'none';
+    charToDelete.splice(index, 1);
+  } else {
+    allSpans.forEach(span => {
+      if(charToDelete.includes(span.innerHTML.toLowerCase())){
+        //&& span.style.display !== 'none') {
+        span.style.opacity = '0';
+        span.style.pointerEvents = 'none';
+        charToDelete.splice(charToDelete.indexOf(span.innerHTML.toLowerCase()), 1);
+      } else {
+        span.style.opacity = '1';
+        span.style.pointerEvents = 'auto';
+      }
+    });
+  }
 }
 
 function checkWin(word) {
