@@ -1,5 +1,0 @@
-[x] Add a new partial word composed of spans to act as receving inputs
-[x] Build keyboard input system
-[x] build a system for pressing the characters for laptop and mobile
-[x] remove previous input and partial word
-[ ] optimize styles

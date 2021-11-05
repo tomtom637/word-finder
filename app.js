@@ -1,10 +1,11 @@
 import shuffleString from './js/string-shuffler.js';
-import { displayHint, handleKeydown, handleKeyup, handleMouseupChar, handleMousedownChar, handleBackspace, handleTouchstartChar, handleTouchmoveChar, handleTouchendChar } from './js/e-listeners-handlers.js';
+import { displayHint, handleBackspace } from './js/events/button-events.js';
+import { handleKeydown, handleKeyup } from './js/events/key-events.js';
+import { handleMouseupChar, handleMousedownChar } from './js/events/mouse-events.js';
+import { handleTouchstartChar, handleTouchmoveChar, handleTouchendChar } from './js/events/touch-events.js';
 import loadImage from './js/image-loader.js';
+import globals from './js/globals.js';
 
-// global variables
-window.inputState = '';
-window.shiftPressed = false;
 
 async function loadWords() {
   const wordsData = await fetch('./words.json');
@@ -13,7 +14,7 @@ async function loadWords() {
 }
 
 async function displayAWord() {
-  window.inputState = '';
+  globals.inputState = '';
   String.prototype.shuffle = shuffleString;
   const app = document.getElementById('app');
   const words = await loadWords();
@@ -39,9 +40,9 @@ async function displayAWord() {
                 <span
                   class="answer-unit
                     ${answerElement === ' ' ? 'space' : ''}
-                    ${window.inputState[i] ? 'space-active' : ''}"
+                    ${globals.inputState[i] ? 'space-active' : ''}"
                   >
-                  ${window.inputState[i] ? window.inputState[i] : ''}
+                  ${globals.inputState[i] ? globals.inputState[i] : ''}
                 </span>
               `)
               .join('')}
@@ -74,7 +75,7 @@ async function displayAWord() {
             </div>
           </div>
         </div>
-        <h1 id="help" style="opacity:0;">${word[window.inputState.length]}</h1>
+        <h1 id="help" style="opacity:0;">${word[globals.inputState.length]}</h1>
       </div>
     </div>
   `;
