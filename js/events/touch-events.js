@@ -5,9 +5,11 @@ let currentlyTouchedElement;
 
 export function handleTouchstartChar(e) {
   e.preventDefault();
-  currentlyTouchedElement = e.target;
-  if(currentlyTouchedElement.nodeName !== 'SPAN') return;
-  currentlyTouchedElement.style.transform = 'scale(1.6)';
+  if(e.touches && e.touches.length < 2) {
+    currentlyTouchedElement = e.target;
+    if(currentlyTouchedElement.nodeName !== 'SPAN') return;
+    currentlyTouchedElement.style.transform = 'scale(1.6)';
+  }
 }
 
 export function handleTouchmoveChar(e) {
